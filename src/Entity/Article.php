@@ -18,7 +18,7 @@ class Article
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=255)
      */
     private $titre;
 
@@ -35,7 +35,12 @@ class Article
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image;
+    private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $auteur;
 
     public function getId(): ?int
     {
@@ -78,14 +83,26 @@ class Article
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getSlug(): ?string
     {
-        return $this->image;
+        return $this->slug;
     }
 
-    public function setImage(string $image): self
+    public function setSlug(string $slug): self
     {
-        $this->image = $image;
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getAuteur(): ?string
+    {
+        return $this->auteur;
+    }
+
+    public function setAuteur(string $auteur): self
+    {
+        $this->auteur = $auteur;
 
         return $this;
     }
