@@ -17,22 +17,14 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function homepage(EntityManagerInterface $em)
+    public function homepage(ArticleRepository $articleRepository)
     {
-
-        $article = new Article;
-        $article
-            ->setTitre('Un troisième article')
-            ->setContenu('Assertively matrix goal-oriented leadership vis-a-vis fully researched technology. Seamlessly synergize out-of-the-box opportunities before worldwide opportunities. Energistically productize visionary processes vis-a-vis unique content. Proactively foster enterprise.')
-            ->setAuteur('Fred')
-            ->setSlug('troisieme-article')
-            ->setDateCreation(new \DateTime('now'));
+        $articles = $articleRepository->findBy([], [], 3);
 
 
-        $em->persist($article);
-        $em->flush();
 
-
-        return $this->render('home.html.twig');
+        return $this->render('home.html.twig', [
+            'articles' => $articles
+        ]);
     }
 }

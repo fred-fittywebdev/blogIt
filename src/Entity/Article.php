@@ -42,6 +42,11 @@ class Article
      */
     private $auteur;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mainPicture;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Article
     public function setAuteur(string $auteur): self
     {
         $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    public function getMainPicture(): ?string
+    {
+        return $this->mainPicture;
+    }
+
+    public function setMainPicture(string $mainPicture): self
+    {
+        $this->mainPicture = $mainPicture;
 
         return $this;
     }
