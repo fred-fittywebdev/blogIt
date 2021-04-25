@@ -42,6 +42,20 @@ class Article
      */
     private $auteur;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mainPicture;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $best;
+
+
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +117,30 @@ class Article
     public function setAuteur(string $auteur): self
     {
         $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    public function getMainPicture(): ?string
+    {
+        return $this->mainPicture;
+    }
+
+    public function setMainPicture(string $mainPicture): self
+    {
+        $this->mainPicture = $mainPicture;
+
+        return $this;
+    }
+
+    public function getBest(bool $best): bool
+    {
+        return $this->best;
+    }
+
+    public function setBest(bool $best): self
+    {
+        $this->best = $best;
 
         return $this;
     }
