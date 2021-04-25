@@ -100,6 +100,9 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "dzango/twig-truncate-extension": {
+        "version": "1.1.0"
+    },
     "egulias/email-validator": {
         "version": "3.1.1"
     },

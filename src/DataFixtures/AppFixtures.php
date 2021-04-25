@@ -59,6 +59,8 @@ class AppFixtures extends Fixture
             $article->setMainPicture($faker->imageUrl(500, 400, true));
             $article->setBest(random_int(0, 1));
 
+            $this->addReference('article-' . $a, $article);
+
             $manager->persist($article);
         }
 
