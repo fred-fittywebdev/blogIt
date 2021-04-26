@@ -21,7 +21,7 @@ class HomeController extends AbstractController
     {
         $articles = $articleRepository->findBy([], ['id' => 'DESC'], 3);
 
-        $featuredProduct = $articleRepository->findBy(['best' => 1], ['dateCreation' => 'ASC'], 1, 5);
+        $featuredProduct = $articleRepository->findBy(['best' => 1], [], 1, 5);
 
         // dd($featuredProduct);
 

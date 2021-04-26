@@ -51,7 +51,7 @@ class AppFixtures extends Fixture
         for ($a = 1; $a <= 33; $a++) {
 
             $article = new Article();
-            $article->setTitre("Article n°: $a");
+            $article->setTitre("Article-$a");
             $article->setAuteur($auteurs[array_rand($auteurs)]);
             $article->setContenu($content[array_rand($content)]);
             $article->setDateCreation(new \DateTime('-' . random_int(1, 45) . ' days'));
