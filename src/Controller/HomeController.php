@@ -20,6 +20,7 @@ class HomeController extends AbstractController
     public function homepage(ArticleRepository $articleRepository)
     {
         $articles = $articleRepository->findBy([], ['id' => 'DESC'], 3);
+        $randomArticles = $articleRepository->findAll();
 
         $featuredProduct = $articleRepository->findBy(['best' => 1], [], 1, 5);
 
@@ -28,7 +29,7 @@ class HomeController extends AbstractController
 
         return $this->render('home.html.twig', [
             'articles' => $articles,
-            'random' => $featuredProduct
+            'randomArticle' => $randomArticles
         ]);
     }
 }

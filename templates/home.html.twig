@@ -3,81 +3,103 @@
 	Acceuil
 {% endblock %}
 {% block body %}
+	<div class="row justify-content-center py-8">
+		<div
+			class="col-12 col-md-10 col-lg-8 text-center">
+
+			<!-- Preheader -->
+			<h6 class="text-uppercase text-primary" data-aos="fade-up">
+				My personal blog
+			</h6>
+
+			<!-- Headin -->
+			<h1 class="display-1 fw-bold" data-aos="fade-up" data-aos-delay="50">
+				Blog It
+			</h1>
+
+			<!-- Text -->
+			<p class="lead text-muted mb-6" data-aos="fade-up" data-aos-delay="100">
+				Bienvenue sur mon blog,  ou je vous parles de sport, de voyages et de développement !
+				<br>
+				Actuellement mon blog comprends
+				<span class=" text-info text-bold ">{{ randomArticle | nombre }}</span>
+				articles,
+																																																																																								mais ce n'est qu'un début &#128521;
+			</p>
+		</div>
+	</div>
+	<!-- / .row -->
 	<div class="container pb-8 pt-7 pb-md-11 pt-md-10 border-bottom border-gray-300"></pre>
 	<h1 class="mb-0">
 		Article en vedette
 	</h1>
-
-	<!-- Text -->
 	<p class="mb-5 text-muted">
 		Chaque jour un nouvel article a découvrir
 	</p>
+	{% set var = random(randomArticle) %}
 	<div class="row">
-		{% for r in random %}
-			<div data-aos="fade-left" class="card card-row shadow-light-lg bg-cover overlay overlay-gradient-dark-end overlay-60 text-white mb-6" style="background-image: url({{ r.mainPicture }});">
-				<div class="row gx-0 justify-content-end">
-					<div
-						class="col-12 col-md-6">
+		<div class="lift card card-row shadow-light-lg bg-cover overlay overlay-gradient-dark-end overlay-60 text-white mb-6" style="background-image: url({{ var.mainPicture }});">
+			<div class="row gx-0 justify-content-end">
+				<div
+					class="col-12 col-md-6">
 
-						<!-- Body -->
-						<a
-							class="card-body" href="#!">
+					<!-- Body -->
+					<a
+						class="card-body" href="#!">
 
-							<!-- Heading -->
-							<h3>
-								{{ r.titre }}
-							</h3>
+						<!-- Heading -->
+						<h3>
+							{{ var.titre }}
+						</h3>
 
-							<!-- Text -->
-							<p class="mb-0 text-white-80">
-								{{ r.contenu | slice(0, 155) }}
-								...
-							</p>
+						<!-- Text -->
+						<p class="mb-0 text-white-80">
+							{{ var.contenu | slice(0, 155) }}
+							...
+						</p>
 
-						</a>
+					</a>
 
-						<!-- Meta -->
-						<a
-							class="card-meta" href="#!">
+					<!-- Meta -->
+					<a
+						class="card-meta" href="#!">
 
-							<!-- Divider -->
-							<hr class="card-meta-divider bg-white-20">
+						<!-- Divider -->
+						<hr class="card-meta-divider bg-white-20">
 
-							{# <!-- Avatar -->
-																																																																																																																																																																																																																									<div class="avatar avatar-sm me-2">
-																																																																																																																																																																																																																										<img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
-																																																																																																																																																																																																																									</div> #}
+						{# <!-- Avatar -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				<div class="avatar avatar-sm me-2">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					<img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				</div> #}
 
-							<!-- Author -->
-								<h6 class="text-uppercase text-white-80 me-2 mb-0"> {{ r.auteur }}
-							</h6>
+						<!-- Author -->
+							<h6 class="text-uppercase text-white-80 me-2 mb-0"> {{ var.auteur }}
+						</h6>
 
-							<!-- Date -->
-							<p class="h6 text-uppercase text-white-80 mb-0 ms-auto">
-								<time datetime="2019-05-02">{{ r.dateCreation|date('d/m/Y') }}</time>
-							</p>
+						<!-- Date -->
+						<p class="h6 text-uppercase text-white-80 mb-0 ms-auto">
+							<time datetime="2019-05-02">{{ var.dateCreation|date('d/m/Y') }}</time>
+						</p>
 
-							<!-- Catégorie -->
-							<p class="h6 text-uppercase text-white-80 mb-0 ms-auto badge bg-light-soft">
-								{% for tag in r.tags %}
-									{{ tag.nom }}
-								{% endfor %}
+						<!-- Catégorie -->
+						{# <p class="h6 text-uppercase text-white-80 mb-0 ms-auto badge bg-light-soft">
+																																																																																																																																																																																											{% for tag in var.tags %}
+																																																																																																																																																																																												{{ tag.nom }}
+																																																																																																																																																																																											{% endfor %}
+																																																																																																																																																																																				
+																																																																																																																																																																																										</p> #}
 
-							</p>
+					</a>
 
-						</a>
-
-					</div>
 				</div>
-				<!-- / .row -->
 			</div>
-
-
 			<!-- / .row -->
-		{% endfor %}
+		</div>
 	</div>
 
+	<!-- / .row -->
 
+	<!-- Text -->
 </div></div><div
 class="container pb-8 pt-7 pb-md-11 pt-md-10">
 <!-- Heading -->
@@ -124,9 +146,9 @@ class="container pb-8 pt-7 pb-md-11 pt-md-10">
 					<hr class="card-meta-divider bg-white-20">
 
 					{# <!-- Avatar -->
-																																																																																																									<div class="avatar avatar-sm me-2">
-																																																																																																										<img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-																																																																																																									</div> #}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										<div class="avatar avatar-sm me-2">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											<img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										</div> #}
 
 					<!-- Author -->
 						<h6 class="text-uppercase text-white-80 me-2 mb-0"> {{a.auteur}}

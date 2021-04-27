@@ -12,7 +12,7 @@ class TagFixtures extends Fixture
     {
         $tagNames = [
             'Sport',
-            'Evasiion',
+            'Evasion',
             'Développement'
         ];
 

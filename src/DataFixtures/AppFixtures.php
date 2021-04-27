@@ -56,7 +56,7 @@ class AppFixtures extends Fixture
             $article->setContenu($content[array_rand($content)]);
             $article->setDateCreation(new \DateTime('-' . random_int(1, 45) . ' days'));
             $article->setSlug($this->slugger->slug($article->getTitre()));
-            $article->setMainPicture($faker->imageUrl(500, 400, true));
+            $article->setMainPicture($faker->imageUrl(1500, 844, true));
             $article->setBest(random_int(0, 1));
 
             $this->addReference('article-' . $a, $article);
