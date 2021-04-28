@@ -32,4 +32,22 @@ class HomeController extends AbstractController
             'randomArticle' => $randomArticles
         ]);
     }
+
+    /**
+     * @Route("/{tag_slug}/{slug}", name="article_show")
+     */
+    public function show($slug, ArticleRepository $articleRepository)
+    {
+        $article = $articleRepository->findOneBy([
+            'slug' => $slug
+        ]);
+
+
+        if (!$article) {
+            throw $this->createNotFoundException("L'article demandé n'existe pas");
+        }
+        return $this->render('article/show.html.twig', [
+            'article' => $article
+        ]);
+    }
 }

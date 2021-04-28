@@ -1,0 +1,178 @@
+{% extends "base.html.twig" %}
+
+{% block title  %}
+	Page de
+	{{  article.titre }}
+
+{% endblock %}
+
+{% block body %}
+	<h1>
+		{{ article.contenu | length }}
+
+	</h1>
+
+	<section class="pt-8 pt-md-11">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div
+					class="col-12 col-md-10 col-lg-9 col-xl-8">
+
+					<!-- Heading -->
+					<h1 class="display-4 text-center">
+						{{ article.titre }}
+					</h1>
+
+					<!-- Text -->
+					<p class="lead mb-7 text-center text-muted">
+						{{ article.contenu | slice(0, 98) }}
+					</p>
+
+					<!-- Meta -->
+					<div class="row align-items-center py-5 border-top border-bottom">
+						<div
+							class="col-auto">
+
+							{# <!-- Avatar -->
+							<div class="avatar avatar-lg">
+								<img src="/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+							</div> #}
+
+						</div>
+						<div
+							class="col ms-n5">
+
+							<!-- Name -->
+							<h6 class="text-uppercase mb-0">
+								{{ article.auteur }}
+							</h6>
+
+							<!-- Date -->
+							<time class="fs-sm text-muted" datetime="2019-05-20">
+								Published on
+								{{ article.dateCreation|date('d/m/Y') }}
+							</time>
+
+						</div>
+						<div
+							class="col-auto">
+
+							<!-- Share -->
+							<span class="h6 text-uppercase text-muted d-none d-md-inline me-4">
+								Share:
+							</span>
+
+							<!-- Icons -->
+							<ul class="d-inline list-unstyled list-inline list-social">
+								<li class="list-inline-item list-social-item me-3">
+									<a href="#!" class="text-decoration-none">
+										<img src="/social/linkedin.svg" class="list-social-icon" alt="...">
+									</a>
+								</li>
+								<li class="list-inline-item list-social-item me-3">
+									<a href="#!" class="text-decoration-none">
+										<img src="/social/facebook.svg" class="list-social-icon" alt="...">
+									</a>
+								</li>
+								<li class="list-inline-item list-social-item me-3">
+									<a href="#!" class="text-decoration-none">
+										<img src="/social/twitter.svg" class="list-social-icon" alt="...">
+									</a>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- / .row -->
+		</div>
+		<!-- / .container -->
+	</section>
+	<!-- SECTION -->
+	<section class="pt-6 pt-md-8">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div
+					class="col-12 col-md-10 col-lg-9 col-xl-8">
+
+					<!-- Fugure -->
+					<figure
+						class="figure mb-7">
+
+						<!-- Image -->
+						<img
+						class="figure-img img-fluid rounded lift lift-lg" src="{{ article.mainPicture }}" alt="...">
+
+						<!-- Caption -->
+						<figcaption class="figure-caption text-center">
+							This is a caption on this photo for reference
+						</figcaption>
+
+					</figure>
+
+					<!-- Text -->
+					<p>
+						{{ article.contenu | slice(98, 1477) }}
+					</p>
+					<p class="mb-0">
+						{{ article.contenu | slice(1575) }}
+					</p>
+
+				</div>
+			</div>
+			<!-- / .row -->
+		</div>
+		<!-- / .container -->
+	</section>
+
+	<section class="mt-8 mb-8">
+		<div class="container">
+			<hr class="card-meta-divider bg-gray-300 mb-10">
+			<h2 class="mt-3 mb-3">
+				Commentaires
+			</h2>
+			<div class="row">
+				{% for commentaire in article.commentaires %}
+					<div
+						class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="50">
+
+						<!-- Card -->
+						<div class="card shadow-light-lg mb-6 mb-md-0 lift lift-lg">
+							<div class="card-body">
+
+								{# <!-- Badge -->
+																																																																																																																																																																																								<span class="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
+																																																																																																																																																																																									<i class="fe fe-message-square ms-3"></i>
+																																																																																																																																																																																								</span> #}
+
+								<!-- Heading -->
+									<h4 class="fw-bold"> {{commentaire.auteur}}
+								</h4>
+
+								<!-- Text -->
+								<p class="text-muted">
+									{{commentaire.contenu}}
+								</p>
+
+								<!-- Link -->
+								<a href="#!" class="fs-sm fw-bold text-decoration-none">
+									{{commentaire.datePost |date('d/m/Y')}}
+									<i class="fe fe-calendar ms-3"></i>
+								</a>
+
+							</div>
+						</div>
+
+					</div>
+				{% endfor %}
+				<div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="150"></div>
+
+				<!-- / .row -->
+			</div>
+			<!-- / .container -->
+		</section>
+
+
+	{% endblock %}
