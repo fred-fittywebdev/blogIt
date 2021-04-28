@@ -3,11 +3,17 @@
 namespace App\DataFixtures;
 
 use App\Entity\Tag;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class TagFixtures extends Fixture
 {
+    protected $slugger;
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
     public function load(ObjectManager $manager)
     {
         $tagNames = [
@@ -20,7 +26,7 @@ class TagFixtures extends Fixture
             $tag = new Tag();
             $tag->setNom($tagNames[array_rand($tagNames)]);
             $tag->setArticle($this->getReference('article-' . random_int(1, 33)));
-
+            $tag->setSlug($this->slugger->slug($tag->getNom()));
             $manager->persist($tag);
 
             $manager->flush();
