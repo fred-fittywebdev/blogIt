@@ -38,6 +38,11 @@ class Commentaire
      */
     private $article;
 
+    public function __construct()
+    {
+        $this->datePost = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

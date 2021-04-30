@@ -2,13 +2,17 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
-use App\Repository\ArticleRepository;
 use DateTimeInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Article;
+use App\Form\CommentType;
+use App\Entity\Commentaire;
 use Dzango\Twig\Extension\Truncate;
+use App\Repository\ArticleRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\TwigBundle\DependencyInjection\Compiler\TwigEnvironmentPass;
 
 class HomeController extends AbstractController
@@ -34,20 +38,37 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/{tag_slug}/{slug}", name="article_show")
+     * @Route("/{nom}", name="article_show")
      */
-    public function show($slug, ArticleRepository $articleRepository)
+    public function show($nom, ArticleRepository $articleRepository, Request $request, EntityManagerInterface $em)
     {
         $article = $articleRepository->findOneBy([
-            'slug' => $slug
+            'slug' => $nom
         ]);
+
+        $commentaire = new Commentaire();
+        $commentaire->setArticle($article);
+        $form = $this->createForm(CommentType::class, $commentaire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($commentaire);
+            $em->flush();
+
+            return $this->redirectToRoute('article_show', ['nom' => $article->getTitre()]);
+        }
+        $formView = $form->createView();
+
+
 
 
         if (!$article) {
             throw $this->createNotFoundException("L'article demandé n'existe pas");
         }
         return $this->render('article/show.html.twig', [
-            'article' => $article
+            'article' => $article,
+            'formView' => $formView
         ]);
     }
 }

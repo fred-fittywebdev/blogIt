@@ -28,3 +28,24 @@ class AppExtension extends AbstractExtension
         return count($tableau);
     }
 }
+
+// function reading_time( $content ) {
+
+// 	// Predefined words-per-minute rate.
+// 	$words_per_minute = 225;
+// 	$words_per_second = $words_per_minute / 60;
+
+// 	// Count the words in the content.
+// 	$word_count = str_word_count( strip_tags( $content ) );
+
+// 	// [UNUSED] How many minutes?
+// 	$minutes = floor( $word_count / $words_per_minute );
+
+// 	// [UNUSED] How many seconds (remainder)?
+// 	$seconds_remainder = floor( $word_count % $words_per_minute / $words_per_second );
+
+// 	// How many seconds (total)?
+// 	$seconds_total = floor( $word_count / $words_per_second );
+
+// 	return $seconds_total;
+// }
