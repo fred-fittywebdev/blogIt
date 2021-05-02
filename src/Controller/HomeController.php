@@ -8,12 +8,14 @@ use App\Form\CommentType;
 use App\Entity\Commentaire;
 use Dzango\Twig\Extension\Truncate;
 use App\Repository\ArticleRepository;
+use App\Service\VerificationComment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\TwigBundle\DependencyInjection\Compiler\TwigEnvironmentPass;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class HomeController extends AbstractController
 {
@@ -40,23 +42,37 @@ class HomeController extends AbstractController
     /**
      * @Route("/{nom}", name="article_show")
      */
-    public function show($nom, ArticleRepository $articleRepository, Request $request, EntityManagerInterface $em)
-    {
+    public function show(
+        $nom,
+        ArticleRepository $articleRepository,
+        Request $request,
+        EntityManagerInterface $em,
+        VerificationComment $verif,
+        FlashBagInterface $session
+    ) {
+
+
         $article = $articleRepository->findOneBy([
             'slug' => $nom
         ]);
 
+
         $commentaire = new Commentaire();
         $commentaire->setArticle($article);
+
+
         $form = $this->createForm(CommentType::class, $commentaire);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($verif->motInterdits($commentaire) === false) {
+                $em->persist($commentaire);
+                $em->flush();
 
-            $em->persist($commentaire);
-            $em->flush();
-
-            return $this->redirectToRoute('article_show', ['nom' => $article->getTitre()]);
+                return $this->redirectToRoute('article_show', ['nom' => $article->getTitre()]);
+            } else {
+                $session->add('danger', "Votre commentaire contient un mot grossier");
+            }
         }
         $formView = $form->createView();
 

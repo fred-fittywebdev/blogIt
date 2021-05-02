@@ -29,9 +29,9 @@
 					<div class="row align-items-center py-5 border-top border-bottom">
 						<div
 							class="col-auto">{# <!-- Avatar -->
-																																																																																																																																																																																																																																																																																																																																																																															<div class="avatar avatar-lg">
-																																																																																																																																																																																																																																																																																																																																																																																<img src="/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-																																																																																																																																																																																																																																																																																																																																																																															</div> #}
+																																																																																																																																																																																																																																																																																																																																																																																							<div class="avatar avatar-lg">
+																																																																																																																																																																																																																																																																																																																																																																																								<img src="/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+																																																																																																																																																																																																																																																																																																																																																																																							</div> #}
 
 						</div>
 						<div
@@ -116,8 +116,8 @@
 							{{ article.contenu | slice(1575) }}
 						</p>
 						{# <p class="mb-0">
-																																																																																																																																																																			{{ article.contenu | slice(1575) }}
-																																																																																																																																																																		</p> #}
+																																																																																																																																																																									{{ article.contenu | slice(1575) }}
+																																																																																																																																																																								</p> #}
 
 					</div>
 				</div>
@@ -143,9 +143,9 @@
 							<div class="card-body">
 
 								{# <!-- Badge -->
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																<span class="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	<i class="fe fe-message-square ms-3"></i>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</span> #}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<span class="badge rounded-pill bg-primary-desat badge-float badge-float-outside">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									<i class="fe fe-message-square ms-3"></i>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								</span> #}
 
 								<!-- Heading -->
 									<h4 class="fw-bold"> {{commentaire.auteur}}
@@ -179,6 +179,13 @@
 				<h2 class="mt-3 mb-4">
 					Laissez votre commentaire
 				</h2>
+				{% for label, messages in app.flashes(['warning', 'danger']) %}
+					{% for message in messages %}
+						<div class="alert alert-{{ label }}">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %}
 				<div class="row">
 					<div class="" data-aos="fade-up" data-aos-delay="50">
 						{{ form_start(formView) }}

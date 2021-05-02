@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Commentaire;
+use Doctrine\ORM\EntityManagerInterface;
 
 class VerificationComment
 {
@@ -13,7 +14,8 @@ class VerificationComment
             'con',
             'salaud',
             'pourri',
-            'chier'
+            'chier',
+            'javascript'
         ];
 
         foreach ($interdits as $word) {
