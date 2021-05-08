@@ -177,7 +177,7 @@ class AppFixtures extends Fixture
             $article->setDateCreation(new \DateTime('-' . random_int(1, 45) . ' days'));
             $article->setSlug($this->slugger->slug($article->getTitre()));
             $article->setMainPicture($faker->imageUrl(1500, 844, true));
-            $article->setBest(random_int(0, 1));
+            $article->setBest(false);
 
             $this->addReference('article-' . $a, $article);
 

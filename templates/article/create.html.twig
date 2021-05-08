@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Création d'un article
+{% endblock %}
+
+{% block body %}
+	<section class="mt-8 mb-8">
+		<div class="container">
+			<h1>Nouvel article</h1>
+			{{ form_start(formView) }}
+
+			{{ form_errors(formView) }}
+
+			{# {{ form_widget(formView) }} #}
+
+			<div class="row">
+				{{ form_start(formView) }}
+				{{ form_row(formView.titre) }}
+				{{ form_row(formView.mainPicture) }}
+				{{ form_row(formView.auteur) }}
+				{{ form_row(formView.contenu) }}
+				{{ form_label(formView.dateCreation, null, {'label_attr': {'class':'form-label'}}
+				) }}
+				{{ form_widget(formView.dateCreation, {'attr': {'class':'form-control'}}) }}
+				{# {{ form_row(formView.best) }} #}
+				{{ form_rest(formView) }}
+				{{ form_end(formView) }}
+			</div>
+		</div>
+	</section>
+
+	{# <button type="submit" class="btn btn-primary">
+																										<i class="fas fa-save"></i>
+																										Créer le produit
+																									</button> #}
+
+	{{ form_end(formView) }}
+{% endblock %}
