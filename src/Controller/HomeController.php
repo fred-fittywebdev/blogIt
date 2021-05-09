@@ -4,18 +4,20 @@ namespace App\Controller;
 
 use DateTimeInterface;
 use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Form\CommentType;
 use App\Entity\Commentaire;
 use Dzango\Twig\Extension\Truncate;
-use App\Repository\ArticleRepository;
 use App\Service\VerificationComment;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\TwigBundle\DependencyInjection\Compiler\TwigEnvironmentPass;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Bundle\TwigBundle\DependencyInjection\Compiler\TwigEnvironmentPass;
 
 class HomeController extends AbstractController
 {
@@ -84,6 +86,38 @@ class HomeController extends AbstractController
         }
         return $this->render('article/show.html.twig', [
             'article' => $article,
+            'formView' => $formView
+        ]);
+    }
+
+    /**
+     * @Route("/admin/article/create", name="article_create")
+     */
+    public function create(Request $request, ArticleRepository $articleRepository, EntityManagerInterface $em, SluggerInterface $slugger)
+    {
+        $article = new Article();
+
+
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $article->setBest(false);
+            $article->setSlug(strtolower($slugger->slug($article->getTitre())));
+            // dd($article);
+
+            $em->persist($article);
+            $em->flush();
+
+            // return $this->redirectToRoute('homepage');
+        }
+
+        if (!$article) {
+            throw $this->createNotFoundException("L'article demandé n'existe pas");
+        }
+
+        $formView = $form->createView();
+        return $this->render('article/create.html.twig', [
             'formView' => $formView
         ]);
     }
