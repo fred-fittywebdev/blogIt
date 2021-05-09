@@ -90,6 +90,19 @@ class HomeController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/admin/article/{id}/edit", name="article_edit")
+     */
+    public function edit($id, ArticleRepository $articleRepository)
+    {
+        $article =  $articleRepository->find($id);
+
+        return $this->render('article/edit.html.twig', [
+            "article" => $article
+        ]);
+    }
+
     /**
      * @Route("/admin/article/create", name="article_create")
      */
