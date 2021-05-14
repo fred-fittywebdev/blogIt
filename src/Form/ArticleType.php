@@ -52,7 +52,11 @@ class ArticleType extends AbstractType
                 ]
             ])
             ->add('Envoyer', SubmitType::class, [
+                'label' => 'A publier',
                 'attr' => ['class' => 'lift btn btn-success form-control mt-5'],
+            ])
+            ->add('Brouillon', SubmitType::class, [
+                'attr' => ['class' => 'lift btn btn-info form-control mt-5'],
             ])
             // ->add('best', CheckboxType::class, [
             //     'label' => 'Article à la une',
