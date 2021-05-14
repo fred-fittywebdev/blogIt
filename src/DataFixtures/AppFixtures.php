@@ -166,6 +166,7 @@ class AppFixtures extends Fixture
             "
         ];
         // $isBest = random_int(0, 1);
+        $state = ['brouillon', 'publie'];
         $date = new DateTime();
 
         for ($a = 1; $a <= 33; $a++) {
@@ -178,6 +179,7 @@ class AppFixtures extends Fixture
             $article->setSlug($this->slugger->slug($article->getTitre()));
             $article->setMainPicture($faker->imageUrl(1500, 844, true));
             $article->setBest(random_int(0, 1));
+            $article->setState($state[array_rand($state)]);
 
             $this->addReference('article-' . $a, $article);
 

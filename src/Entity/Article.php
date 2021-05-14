@@ -69,6 +69,11 @@ class Article
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $state;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -259,5 +264,17 @@ class Article
     public function __toString()
     {
         return $this->titre;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): self
+    {
+        $this->state = $state;
+
+        return $this;
     }
 }
