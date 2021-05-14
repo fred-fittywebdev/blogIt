@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use DateTimeInterface;
 use App\Entity\Article;
-use App\Form\ArticleType;
 use App\Form\CommentType;
 use App\Entity\Commentaire;
+use App\Form\ArticleType;
 use Dzango\Twig\Extension\Truncate;
 use App\Service\VerificationComment;
 use App\Repository\ArticleRepository;
@@ -17,7 +17,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Bundle\TwigBundle\DependencyInjection\Compiler\TwigEnvironmentPass;
 
 class HomeController extends AbstractController
 {

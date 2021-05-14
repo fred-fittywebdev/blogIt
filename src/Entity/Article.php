@@ -35,7 +35,7 @@ class Article
     private $dateCreation;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", nullable=true, length=255)
      */
     private $slug;
 
@@ -50,7 +50,7 @@ class Article
     private $mainPicture;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=0})
      */
     private $best;
 
@@ -161,6 +161,7 @@ class Article
 
         return $this;
     }
+
 
     public function getBest(bool $best): bool
     {
