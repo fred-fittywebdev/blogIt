@@ -17,9 +17,13 @@
 			<div class="row">
 				{{ form_start(formView) }}
 				{{ form_row(formView.titre) }}
+				{{ form_errors(formView.titre) }}
 				{{ form_row(formView.mainPicture) }}
+
 				{{ form_row(formView.auteur) }}
+
 				{{ form_row(formView.contenu) }}
+
 				{{ form_label(formView.dateCreation, null, {'label_attr': {'class':'form-label'}}
 				) }}
 				{{ form_widget(formView.dateCreation, {'attr': {'class':'form-control'}}) }}
@@ -34,13 +38,13 @@
 	</section>
 
 	{# <button type="submit" class="btn btn-primary">
-			<<<<<<< HEAD
-																																		<i class="fas fa-save"></i>
-																																		Créer le produit
-																																	</button> #}
+					<<<<<<< HEAD
+																																				<i class="fas fa-save"></i>
+																																				Créer le produit
+																																			</button> #}
 	{# =======
-		<i class="fas fa-save"></i>
-		Créer le produit #}
+				<i class="fas fa-save"></i>
+				Créer le produit #}
 </button>
 
 
