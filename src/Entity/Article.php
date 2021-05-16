@@ -7,9 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -51,9 +55,15 @@ class Article
     private $auteur;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $mainPicture;
+
+    /**
+     * @Vich\UploadableField(mapping="article_image", fileNameProperty="mainPicture")
+     * @var File
+     */
+    private $articleFile;
 
     /**
      * @ORM\Column(type="boolean", nullable=true, options={"default"=0})
@@ -94,8 +104,16 @@ class Article
     }
 
 
+    public function setArticleFile(File $image = null):Article
+    {
+        $this->articleFile = $image;
+        return $this;
+    }
 
-
+    public function getArticleFile(): ?File
+    {
+        return $this->articleFile;
+    }
 
     public function getId(): ?int
     {
@@ -167,7 +185,7 @@ class Article
         return $this->mainPicture;
     }
 
-    public function setMainPicture(string $mainPicture): self
+    public function setMainPicture(?string $mainPicture): self
     {
         $this->mainPicture = $mainPicture;
 
