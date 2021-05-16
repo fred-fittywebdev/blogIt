@@ -33,7 +33,11 @@ class ArticleType extends AbstractType
                     'placeholder' => 'Contenu dre votre article'
                 ]
             ])
-            ->add('dateCreation', null, [
+            // ->add('dateCreation', null, [
+            //     'widget' => 'single_text'
+            // ])
+            ->add('update_at', null, [
+                'label' => 'Modifié le: ',
                 'widget' => 'single_text'
             ])
             // ->add('slug')

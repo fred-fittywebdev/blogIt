@@ -24,9 +24,12 @@
 
 				{{ form_row(formView.contenu) }}
 
-				{{ form_label(formView.dateCreation, null, {'label_attr': {'class':'form-label'}}
+				{# {{ form_label(formView.dateCreation, null, {'label_attr': {'class':'form-label'}}
+								) }}
+								{{ form_widget(formView.dateCreation, {'attr': {'class':'form-control'}}) }} #}
+				{{ form_label(formView.update_at, null, {'label_attr': {'class':'form-label'}}
 				) }}
-				{{ form_widget(formView.dateCreation, {'attr': {'class':'form-control'}}) }}
+				{{ form_widget(formView.update_at, {'attr': {'class':'form-control'}}) }}
 				{# {{ form_row(formView.best) }} #}
 
 				{{ form_widget(formView.Brouillon)}}
@@ -38,13 +41,13 @@
 	</section>
 
 	{# <button type="submit" class="btn btn-primary">
-					<<<<<<< HEAD
-																																				<i class="fas fa-save"></i>
-																																				Créer le produit
-																																			</button> #}
+								<<<<<<< HEAD
+																																							<i class="fas fa-save"></i>
+																																							Créer le produit
+																																						</button> #}
 	{# =======
-				<i class="fas fa-save"></i>
-				Créer le produit #}
+							<i class="fas fa-save"></i>
+							Créer le produit #}
 </button>
 
 

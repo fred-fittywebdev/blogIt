@@ -80,11 +80,17 @@ class Article
      */
     private $state;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $update_at;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->dateCreation = new \DateTime();
     }
 
 
@@ -281,6 +287,18 @@ class Article
     public function setState(string $state): self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getUpdateAt(): ?\DateTimeInterface
+    {
+        return $this->update_at;
+    }
+
+    public function setUpdateAt(?\DateTimeInterface $update_at): self
+    {
+        $this->update_at = $update_at;
 
         return $this;
     }
