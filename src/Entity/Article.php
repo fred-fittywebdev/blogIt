@@ -26,10 +26,11 @@ class Article
 
     /**
      * @Assert\Length(
-     *  min= 6,
-     *  max= 50,
-     *  minMessage="Le titre doit faire au moins {{ limit }} caractères",
-     *  maxMessage="Le titre doit faire moins de {{ limit }} caractères")
+     *     min= 6,
+     *     max=50,
+     *     minMessage="Le titre doit faire au moins {{ limit }} caractères",
+     *     maxMessage="Le titre doit faire moins de {{ limit }} caractères"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $titre;
@@ -104,7 +105,7 @@ class Article
     }
 
 
-    public function setArticleFile(File $image = null):Article
+    public function setArticleFile(File $image = null): Article
     {
         $this->articleFile = $image;
         return $this;
