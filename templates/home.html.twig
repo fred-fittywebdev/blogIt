@@ -24,7 +24,7 @@
 				Actuellement mon blog comprends
 				<span class=" text-info text-bold ">{{ randomArticle | nombre }}</span>
 				articles,
-																																																																																																																				mais ce n'est qu'un début &#128521;
+																																																																																																																																				mais ce n'est qu'un début &#128521;
 			</p>
 		</div>
 	</div>
@@ -68,9 +68,9 @@
 						<hr class="card-meta-divider bg-white-20">
 
 						{# <!-- Avatar -->
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														<div class="avatar avatar-sm me-2">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															<img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														</div> #}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						<div class="avatar avatar-sm me-2">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							<img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</div> #}
 
 						<!-- Author -->
 							<h6 class="text-uppercase text-white-80 me-2 mb-0"> {{ var.auteur }}
@@ -83,11 +83,11 @@
 
 						<!-- Catégorie -->
 						{# <p class="h6 text-uppercase text-white-80 mb-0 ms-auto badge bg-light-soft">
-																																																																																																																																																																																																																																					{% for tag in var.tags %}
-																																																																																																																																																																																																																																						{{ tag.nom }}
-																																																																																																																																																																																																																																					{% endfor %}
-																																																																																																																																																																																																																														
-																																																																																																																																																																																																																																				</p> #}
+																																																																																																																																																																																																																																																													{% for tag in var.tags %}
+																																																																																																																																																																																																																																																														{{ tag.nom }}
+																																																																																																																																																																																																																																																													{% endfor %}
+																																																																																																																																																																																																																																																						
+																																																																																																																																																																																																																																																												</p> #}
 
 					</a>
 
@@ -119,7 +119,7 @@ class="container pb-8 pt-7 pb-md-11 pt-md-10">
 
 			<!-- Card -->
 			<div
-				class="card mb-6 mb-lg-0 pt-14 overlay overlay-black overlay-30 bg-cover shadow-light-lg lift lift-lg" style="background-image: url({{ a.mainPicture }}">
+				class="card mb-6 mb-lg-0 pt-14 overlay overlay-black overlay-30 bg-cover shadow-light-lg lift lift-lg" style="background-image: url({{ asset('/uploads/' ~ a.mainPicture ) }})">
 
 				<!-- Body -->
 				<a
@@ -146,9 +146,9 @@ class="container pb-8 pt-7 pb-md-11 pt-md-10">
 					<hr class="card-meta-divider bg-white-20">
 
 					{# <!-- Avatar -->
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													<div class="avatar avatar-sm me-2">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														<img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													</div> #}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	<div class="avatar avatar-sm me-2">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		<img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	</div> #}
 
 					<!-- Author -->
 						<h6 class="text-uppercase text-white-80 me-2 mb-0"> {{a.auteur}}
