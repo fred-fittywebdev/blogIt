@@ -19,75 +19,75 @@
 
 			<!-- Text -->
 			{# <p class="lead text-muted mb-6" data-aos="fade-up" data-aos-delay="100">
-																																					Bienvenue sur mon blog,  ou je vous parles de sport, de voyages et de développement !
-																																					<br>
-																																					Actuellement mon blog comprends
-																																					<span class=" text-info text-bold ">{{ randomArticle | nombre }}</span>
-																																					articles,
-																																																																																																																																																									mais ce n'est qu'un début &#128521;
-																																				</p> #}
+																																								Bienvenue sur mon blog,  ou je vous parles de sport, de voyages et de développement !
+																																								<br>
+																																								Actuellement mon blog comprends
+																																								<span class=" text-info text-bold ">{{ randomArticle | nombre }}</span>
+																																								articles,
+																																																																																																																																																												mais ce n'est qu'un début &#128521;
+																																							</p> #}
 		</div>
 	</div>
 	<!-- / .row -->
 	{# <div class="container pb-8 pt-7 pb-md-11 pt-md-10 border-bottom border-gray-300"></pre>
-						<h1 class="mb-0">
-							Article en vedette
-						</h1>
-						<p class="mb-5 text-muted">
-							Chaque jour un nouvel article a découvrir
-						</p>
-						{% set var = random(randomArticle) %}
-						<div class="row">
-							<div class="lift card card-row shadow-light-lg bg-cover overlay overlay-gradient-dark-end overlay-60 text-white mb-6" style="background-image: url({{ var.mainPicture }});">
-								< class="row gx-0 justify-content-end">
-									<d
-										class="col-12 col-md-6">
-					
-										<!-- Body -->
-										<a
-											class="card-body" href=" {{ path('article_show', {'nom': var.titre}) }} ">
-					
-											<!-- Heading -->
-											<h3>
-												{{ var.titre }}
-											</h3>
-					
-											<!-- Text -->
-											<p class="mb-0 text-white-80">
-												{{ var.contenu | slice(0, 155) }}
-												...
-											</p>
-					
-										</a>
-					
-										<!-- Meta -->
-										<
-											class="card-meta" href="#!">
-					
-											<!-- Divider -->
-											<hr class="card-meta-divider bg-white-20">
-					
-											{# <!-- Avatar -->
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													<div class="avatar avatar-sm me-2">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														<img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													</div> #}
+							<h1 class="mb-0">
+								Article en vedette
+							</h1>
+							<p class="mb-5 text-muted">
+								Chaque jour un nouvel article a découvrir
+							</p>
+							{% set var = random(randomArticle) %}
+							<div class="row">
+								<div class="lift card card-row shadow-light-lg bg-cover overlay overlay-gradient-dark-end overlay-60 text-white mb-6" style="background-image: url({{ var.mainPicture }});">
+									< class="row gx-0 justify-content-end">
+										<d
+											class="col-12 col-md-6">
+						
+											<!-- Body -->
+											<a
+												class="card-body" href=" {{ path('article_show', {'nom': var.titre}) }} ">
+						
+												<!-- Heading -->
+												<h3>
+													{{ var.titre }}
+												</h3>
+						
+												<!-- Text -->
+												<p class="mb-0 text-white-80">
+													{{ var.contenu | slice(0, 155) }}
+													...
+												</p>
+						
+											</a>
+						
+											<!-- Meta -->
+											<
+												class="card-meta" href="#!">
+						
+												<!-- Divider -->
+												<hr class="card-meta-divider bg-white-20">
+						
+												{# <!-- Avatar -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														<div class="avatar avatar-sm me-2">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															<img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														</div> #}
 
 	<!-- Author -->
 	{# <h6 class="text-uppercase text-white-80 me-2 mb-0"> {{ var.auteur }}
-											</h6>
-										
-											<!-- Date -->
-											<p class="h6 text-uppercase text-white-80 mb-0 ms-auto">
-												<time datetime="2019-05-02">{{ var.dateCreation|date('d/m/Y') }}</time>
-											</p> #}
+												</h6>
+											
+												<!-- Date -->
+												<p class="h6 text-uppercase text-white-80 mb-0 ms-auto">
+													<time datetime="2019-05-02">{{ var.dateCreation|date('d/m/Y') }}</time>
+												</p> #}
 
 	<!-- Catégorie -->
 	{# <p class="h6 text-uppercase text-white-80 mb-0 ms-auto badge bg-light-soft">
-																																																																																																																																																																																																																																												{% for tag in var.tags %}
-																																																																																																																																																																																																																																													{{ tag.nom }}
-																																																																																																																																																																																																																																												{% endfor %}
-																																																																																																																																																																																																																																					
-																																																																																																																																																																																																																																											</p> #}
+																																																																																																																																																																																																																																													{% for tag in var.tags %}
+																																																																																																																																																																																																																																														{{ tag.nom }}
+																																																																																																																																																																																																																																													{% endfor %}
+																																																																																																																																																																																																																																						
+																																																																																																																																																																																																																																												</p> #}
 
 	<!-- / .row -->
 	<!-- / .row -->
@@ -95,7 +95,7 @@
 		<div class="container pb-8 pt-7 pb-md-11 pt-md-10"><!-- Heading --><h2 class="mb-0">En direct du blog</h2><!-- Text --><p class="mb-5 text-muted">Retrouvez les derniers articles écrits par nos auteurs.</p>
 		<div class="row">
 			{% for a in articles %}
-				<div class="col-12 col-md-6 col-lg-4 d-flex mb-4"><!-- Card --><div class="card mb-6 mb-lg-0 pt-14 overlay overlay-black overlay-30 bg-cover shadow-light-lg lift lift-lg" style="background-image: url({{ a.mainPicture }}"><!-- Body --><a
+				<div class="col-12 col-md-6 col-lg-4 d-flex mb-4"><!-- Card --><div class="card mb-6 mb-lg-0 pt-14 overlay overlay-black overlay-30 bg-cover shadow-light-lg lift lift-lg" style="background-image: url({{ asset('/uploads/' ~ a.mainPicture ) }}"><!-- Body --><a
 							class="card-body mt-auto" href="{{ path('article_show', {'nom': a.titre}) }}">
 
 							<!-- Heading -->
@@ -115,9 +115,9 @@
 							<hr class="card-meta-divider bg-white-20">
 
 							{# <!-- Avatar -->
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															<div class="avatar avatar-sm me-2">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																<img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															</div> #}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						<div class="avatar avatar-sm me-2">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							<img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</div> #}
 
 							<!-- Author -->
 								<h6 class="text-uppercase text-white-80 me-2 mb-0"> {{a.auteur}}
